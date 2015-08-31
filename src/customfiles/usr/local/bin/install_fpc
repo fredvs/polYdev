@@ -1,0 +1,26 @@
+#!/bin/sh
+
+DESTDIR=/usr/local/lib
+DISTDIR=/dist
+
+ISOVERSION=1
+
+echo "Installing fpc 2.6.4 and fpc 3.1.1"; \
+echo "..."; \
+
+ tar -xpzf ${DISTDIR}/fpc.tar.gz -C ${DESTDIR}
+
+ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/ppcx64 
+ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/ppcx64_264
+
+ln -s ${DESTDIR}/fpc/3.1.1/ppcx64 /usr/local/bin/ppcx64_311
+
+ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/fpc
+ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/fpc264
+ln -s ${DESTDIR}/fpc/3.1.1/ppcx64 /usr/local/bin/fpc311
+
+
+echo "Installation of fpc done."; \
+
+
+

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+install_devdep
+echo "..."
+install_gdb
+echo "..."
+install_fpc
+echo "..."
+install_msegui
+echo "..."
+install_fpgui
+echo "..."
+install_lib32
+echo "..."
+install_git
+echo "..."
+install_wine
+echo "..."
+install_ivew
+echo "..."
+echo "Press [Enter] to quit"
+
+read something
+
+

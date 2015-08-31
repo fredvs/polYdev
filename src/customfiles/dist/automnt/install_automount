@@ -1,0 +1,26 @@
+#!/bin/sh
+
+DESTDIR=/
+PACK=/dist/automnt/automount-1.5.3.txz
+
+PKG=/usr/local/sbin/pkg
+
+echo "Installing automount package. (phase 1)"
+              
+${PKG} -c ${DESTDIR} add -M ${PACK}
+echo "..."
+echo "Do not worry about missing dependencies."
+echo "..."
+echo "There are already installed in main system..."
+
+echo "Installing automount package. (phase 2)"
+              
+${PKG} -c ${DESTDIR} add -M ${PACK}
+
+echo "Done."
+
+echo "Do not worry about missing dependencies."
+echo "..."
+echo "There are already installed in main system..."
+
+

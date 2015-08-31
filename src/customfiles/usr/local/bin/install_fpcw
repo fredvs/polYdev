@@ -1,0 +1,9 @@
+#!/bin/sh
+
+install_fpc
+
+echo "Press any key to quit"
+
+read something
+
+

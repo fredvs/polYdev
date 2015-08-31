@@ -1,0 +1,35 @@
+#!/bin/sh
+
+DESTDIR=/
+DISTDIR=/dist
+
+PKG=/usr/local/sbin/pkg
+
+ISOVERSION=1
+
+echo "Installing git packages."
+echo "..."
+echo "Decompressing packages..."
+
+ tar -xpzf ${DISTDIR}/git.tar.gz -C ${DISTDIR}
+
+		echo -n "Installing git packages ..." \
+
+              cd ${DISTDIR}/git && for _FILE in *; do \
+                        _FILES="/dist/git/${_FILE}"; \
+                
+                ${PKG} -c ${DESTDIR} add -M ${_FILES}; \
+                  done; \
+
+echo "Installing git phase 2..."
+    ${PKG} -c ${DESTDIR} add -M /dist/git/git-lite-2.4.6.txz; \
+            
+		rm -rf ${DISTDIR}/git; \
+		echo "Done."; \
+
+echo "Do not worry about missing dependencies."
+echo "..."
+echo "There are already installed in main system..."
+
+
+

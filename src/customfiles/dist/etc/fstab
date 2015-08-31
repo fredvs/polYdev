@@ -1,0 +1,6 @@
+# Device                Mountpoint      FStype  Options         Dump    Pass#
+/dev/gpt/gpswap         none            swap    sw              0       0
+/dev/gpt/gprootfs       /               ufs     rw              1       1
+/dev/gpt/gptmpfs        /tmp            ufs     rw              2       2
+/dev/gpt/gpusrfs        /usr            ufs     rw              2       2
+/dev/gpt/gpvarfs        /var            ufs     rw              2       2

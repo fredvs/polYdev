@@ -1,0 +1,9 @@
+#!/bin/sh
+
+install_wine
+
+echo "Press [Enter] to quit"
+
+read something
+
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+install_lib32
+
+echo "Press [Enter] to quit"
+
+read something
+
+

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DESTDIR=/usr/local/share
+DISTDIR=/dist
+
+ISOVERSION=1
+
+echo "Installing fpGUI source."; \
+echo "..."; \
+
+${_v} tar -xpzf ${DISTDIR}/fpgui.tar.gz -C ${DESTDIR}
+
+echo "Installation of fpGUI done."; \
+
+
+

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+DISTDIR=/dist
+DESTDIR=/dist/tmp
+WINELIBDIR=/root/.wine/drive_c/windows/system32
+WINEPROGDIR=/root/.wine/drive_c
+
+echo "Installing irfanView..."
+
+ tar -xpzf ${DISTDIR}/winedll.tar.gz -C ${DESTDIR}/
+
+cp ${DESTDIR}/winedll/mfc42.dll ${WINELIBDIR}/
+
+tar -xpzf ${DISTDIR}/IrfanView.tar.gz -C ${WINEPROGDIR}/
+
+echo "Installation of irfanView done."; \
+
+
+

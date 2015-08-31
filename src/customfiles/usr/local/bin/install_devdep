@@ -1,0 +1,35 @@
+#!/bin/sh
+
+DESTDIR=/
+DISTDIR=/dist
+
+PKG=/usr/local/sbin/pkg
+
+ISOVERSION=1
+
+echo "Installing Development Dependencies packages."
+echo "..."
+echo "Decompressing packages..."
+
+ tar -xpzf ${DISTDIR}/devdep.tar.gz -C ${DISTDIR}
+
+		echo -n "Installing Dev Dep packages ..." \
+
+              cd ${DISTDIR}/devdep && for _FILE in *; do \
+                        _FILES="/dist/devdep/${_FILE}"; \
+                
+                ${PKG} -c ${DESTDIR} add -M ${_FILES}; \
+                  done; \
+
+echo "Installing xorg-lib phase 2..."
+    ${PKG} -c ${DESTDIR} add -M /dist/devdep/xorg-libraries-7.7_2.txz; \
+            
+		rm -rf ${DISTDIR}/devdep; \
+		echo "Done."; \
+
+echo "Do not worry about missing dependencies."
+echo "..."
+echo "There are already installed in main system..."
+
+
+

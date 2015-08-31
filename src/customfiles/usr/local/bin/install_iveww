@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "This needs wine and lib32 installed."
+
+echo "Press [Enter] to continue."
+read something
+
+install_ivew
+
+echo "Press [Enter] to quit"
+
+read something
+
+

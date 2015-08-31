@@ -1,0 +1,17 @@
+#!/bin/sh
+
+PACK=/dist/lib32.txz
+
+echo "Installing lib32 packages."
+echo "..."
+echo "Decompressing packages..."
+
+ tar -xvpJf ${PACK}  -C /
+              
+echo "Done."
+
+echo "Do not worry about missing dependencies."
+echo "..."
+echo "There are already installed in main system..."
+
+

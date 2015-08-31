@@ -1,0 +1,58 @@
+#!/bin/sh
+clear
+
+if  [ -c "/dev/ada0" ]  ; then
+substring=ada0 
+else
+substring=da0
+fi
+
+substring2=da
+substring3=wd
+substring4=p
+substring5=s
+unm=0
+
+
+# choose the device to unmount
+cd /media/disk
+echo ""
+echo "Unmountable devices."
+echo "--------------------------------------"
+for i in $( ls ); do
+if [ "$i" != "${i%$substring*}" ]; then
+#    echo "$substring IS in $i"
+else
+if [ "$i" != "${i%$substring2*}" ] || [ "$i" != "${i%$substring3*}" ] ; then
+if [ "$i" != "${i%$substring4*}" ] || [ "$i" != "${i%$substring5*}" ] ; then
+echo "$i"
+echo "--------------------------------------"
+unm=1
+fi
+fi
+fi
+done
+
+if   [ "$unm" = 0 ];  then
+echo " "
+echo "No device to unmount."
+echo " "
+echo "Press [Enter] to quit..."
+read some
+echo " "
+else
+
+
+echo "Write the device to unmount + [Enter]"
+echo " "
+
+#
+read i
+
+umount /media/disk/$i  
+
+rmdir /media/disk/$i   
+fi
+
+clear
+

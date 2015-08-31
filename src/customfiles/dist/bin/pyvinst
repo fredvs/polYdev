@@ -1,0 +1,270 @@
+#!/bin/sh
+clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo -e "\e[0;29m                         Transfering \e[0m \e[0;36mp\e[0m\e[0;32mo\e[0m\e[0;31ml\e[0m\e[1;33mY\e[0m\e[0;36md\e[0m\e[0;31me\e[0;32mv\e[0m\e[0m" on device...
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "           Look at first column of the list and choose the device to use."
+echo " "
+echo "                It would be something like 'da0', 'ada0' or 'da1,...'"
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "                          Press [Enter] to see the list."
+read something
+clear
+LINE="-------------------------------------------------------------------------------------"
+echo  "Dev  SectorSize  SizeBytes     SizeSectors    Strip  Offset  Cylinders Heads  SectNb "
+echo ${LINE}
+
+if [ -c "/dev/da0" ] 
+then 
+diskinfo da0
+echo ${LINE}
+fi
+
+if [ -c "/dev/ada0" ] 
+then 
+diskinfo ada0
+echo ${LINE}
+fi
+
+if [ -c "/dev/da1" ] 
+then 
+diskinfo da1
+echo ${LINE}
+fi
+
+if [ -c "/dev/ada1" ] 
+then 
+diskinfo ada1
+echo ${LINE}
+fi
+
+if [ -c "/dev/da2" ] 
+then 
+diskinfo da2
+echo ${LINE}
+fi
+
+if [ -c "/dev/ada2" ] 
+then 
+diskinfo ada2
+echo ${LINE}
+fi
+
+if [ -c "/dev/da3" ] 
+then 
+diskinfo da3
+echo ${LINE}
+fi
+
+if [ -c "/dev/ada3" ] 
+then 
+diskinfo ada3
+echo ${LINE}
+fi
+
+if [ -c "/dev/da4" ] 
+then 
+diskinfo da4
+echo ${LINE}
+fi
+
+if [ -c "/dev/ada4" ] 
+then 
+diskinfo ada4
+echo ${LINE}
+fi
+
+echo " "
+echo " "
+echo "Write the device to use + [Enter]."
+echo "Example: da0"
+echo " "
+read dev
+
+ if [ -c "/dev/${dev}" ] 
+then 
+clear
+echo "Create a new GPT partition on ${dev}."
+echo "..."
+
+umount /dev/${dev}p1
+umount /dev/${dev}p2
+umount /dev/${dev}p3
+umount  /dev/${dev}p4
+umount /dev/${dev}p5
+umount /dev/${dev}p6
+
+gpart destroy -F ${dev}
+gpart create -s gpt ${dev}
+
+
+echo "Done."
+echo "Create a new boot partition."
+echo "..."
+
+gpart add -t freebsd-boot -l gpboot -b 40 -s 512K ${dev}
+
+echo "Done."
+echo "Install the GPT bootcode."
+echo "..."
+
+gpart bootcode -b /boot/pmbr -p /boot/gptboot -i 1 ${dev}
+
+echo "Done."
+echo "Create a partition for /."
+echo "..."
+
+gpart add -t freebsd-ufs -l gprootfs -b 1M -s 2G ${dev}
+
+echo "Done"
+echo "Create a partition for swap, /var, /tmp, /usr."
+echo "..."
+
+gpart add -t freebsd-swap -l gpswap -s 512M ${dev}
+gpart add -t freebsd-ufs  -l gpvarfs -s 1G ${dev}
+gpart add -t freebsd-ufs  -l gptmpfs -s 256M ${dev}
+gpart add -t freebsd-ufs  -l gpusrfs -a 1M ${dev}
+
+echo "Done."
+echo "Show partition."
+echo "..."
+
+gpart show -l -p ${dev}
+
+echo "Done."
+echo "Format the new filesystems."
+echo "..."
+
+newfs -U /dev/${dev}p2
+newfs -U /dev/${dev}p4
+newfs -U /dev/${dev}p5
+newfs -U /dev/${dev}p6
+
+echo "..."
+echo "All format done."
+echo "..."
+
+
+MKDIR=/bin/mkdir
+
+echo "Dump / and restore to disk"
+echo "..."
+
+
+ if [ -d "/media/disk/polydevdisk" ]; then 
+rmdir /media/disk/polydevdisk/* 
+else
+mkdir /media/disk/polydevdisk
+fi
+echo "removed dir"
+
+mkdir /media/disk/polydevdisk/tmp
+mkdir /media/disk/polydevdisk/var
+mkdir /media/disk/polydevdisk/usr
+
+mount /dev/${dev}p2 /media/disk/polydevdisk
+
+dump -C16 -b64 -0uanL -h0 -f - /    | (cd /media/disk/polydevdisk && restore -ruf -)
+
+echo "Dump /var and restore to disk"
+echo "..."
+
+mount /dev/${dev}p4 /media/disk/disk0/var
+
+dump -C16 -b64 -0uanL -h0 -f - /var | (cd /media/disk/polydevdisk/var && restore -ruf -)
+
+echo "Dump /tmp and restore to disk"
+echo "..."
+
+mount /dev/${dev}p5 /media/disk/polydevdisk/tmp
+
+dump -C16 -b64 -0uanL -h0 -f - /tmp | (cd  /media/disk/polydevdisk/tmp && restore -ruf -)
+
+echo "Copy /usr and restore to disk"
+echo "..."
+
+mount /dev/${dev}p6  /media/disk/polydevdisk/usr
+
+dump -C16 -b64 -0uanL -h0 -f - /usr | (cd  /media/disk/polydevdisk/usr && restore -ruf -)
+
+# cp -afv  /usr/  /media/disk/disk0/usr/
+
+echo "Done..."
+
+echo "Copy config files... "
+echo "..."
+cp -afv /dist/boot/loader.conf   /media/disk/polydevdisk/boot/loader.conf 
+cp -afv /dist/etc/fstab    /media/disk/polydevdisk/etc/fstab
+cp -afv /dist/etc/motd    /media/disk/polydevdisk/etc/motd
+
+cp -afv /dist/root/jwmrc    /media/disk/polydevdisk/root/.jwmrc
+cp -afv /dist/root/xinitrc   /media/disk/polydevdisk/root/.xinitrc
+cp -afv /dist/bin/pyvinst   /media/disk/polydevdisk/usr/local/bin/pyvinst
+cp -afv /dist/bin/pyvmountdisk  /media/disk/polydevdisk/usr/local/bin/pyvmountdisk
+cp -afv /dist/bin/pyvumountdisk  /media/disk/polydevdisk/usr/local/bin/pyvumountdisk
+
+chmod 1777   /media/disk/polydevdisk/tmp
+chmod 1777   /media/disk/polydevdisk/var/tmp
+
+rmdir  /media/disk/polydevdisk/media/disk/polydevdisk/* 
+rmdir  /media/disk/polydevdisk/media/disk/* 
+rmdir  /media/disk/polydevdisk/media/cdrom/* 
+
+rm   /media/disk/polydevdisk/.usr.tar.xz
+
+echo "..."
+echo "Done..."
+echo "..."
+clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "                         All the system is transfered... ;-)"
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "                              Press [Enter] to quit"
+
+read something
+
+
+else
+echo " "
+echo "${dev} is not a valid device..."
+echo " "
+echo "Press [Enter] to quit.."
+read something
+fi
+
+

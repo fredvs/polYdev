@@ -1,0 +1,41 @@
+#!/bin/sh
+clear
+substring=cd
+
+# unmount all
+cd /dev
+
+for i in $( ls ); do
+if [ "$i" != "${i%$substring*}" ]; then
+umount /dev/$i  
+fi
+done
+
+#read some
+clear
+
+ if [ -d "/media/cdrom" ]; then 
+rmdir /media/cdrom/* 
+else
+mkdir /media/cdrom
+fi
+echo "removed dir"
+
+#read some
+clear
+
+cd /dev
+
+# mount all
+for i in $( ls ); do
+if [ "$i" != "${i%$substring*}" ]; then
+mkdir   /media/cdrom/$i
+mount -t cd9660 /dev/$i /media/cdrom/$i
+fi
+done
+echo "done"
+
+# read some
+clear
+
+xfe /media/cdrom

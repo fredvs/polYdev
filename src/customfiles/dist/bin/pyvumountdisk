@@ -1,0 +1,39 @@
+#!/bin/sh
+clear
+
+if  [ -c "/dev/ada0" ]  ; then
+substring=ada0 
+else
+substring=da0
+fi
+
+substring2=da
+substring3=wd
+substring4=p
+substring5=s
+
+# unmount all
+cd /dev
+
+for i in $( ls ); do
+if [ "$i" != "${i%$substring*}" ]; then
+    echo "$substring IS in $i"
+else
+if [ "$i" != "${i%$substring2*}" ] || [ "$i" != "${i%$substring3*}" ] ; then
+if [ "$i" != "${i%$substring4*}" ] || [ "$i" != "${i%$substring5*}" ] ; then
+echo "Substring IS in $i"
+umount /dev/$i  
+clear
+fi
+fi
+fi
+done
+
+ if [ -d "/media/disk" ]; then 
+rmdir /media/disk/* 
+else
+mkdir /media/disk
+fi
+echo "removed dir"
+
+clear

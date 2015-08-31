@@ -1,0 +1,172 @@
+#!/bin/sh
+clear
+
+if  [ -c "/dev/ada0" ]  ; then
+substring=ada0 
+else
+substring=da0
+fi
+
+substring2=da
+substring3=wd
+substring4=p
+substring5=s
+unm=0
+
+
+# choose the device to mount
+cd /dev
+echo ""
+echo "Mountable devices."
+echo "--------------------------------------"
+for i in $( ls ); do
+if [ "$i" != "${i%$substring*}" ]; then
+#    echo "$substring IS in $i"
+else
+if [ "$i" != "${i%$substring2*}" ] || [ "$i" != "${i%$substring3*}" ] ; then
+if [ "$i" != "${i%$substring4*}" ] || [ "$i" != "${i%$substring5*}" ] ; then
+echo "$i"
+echo "--------------------------------------"
+unm=1
+fi
+fi
+fi
+done
+
+if   [ "$unm" = 0 ];  then
+echo " "
+echo "No device to mount."
+echo " "
+echo "Press [Enter] to quit..."
+read some
+echo " "
+else
+
+echo " "
+echo "Write the device to mount + [Enter]"
+echo " "
+
+#
+read i
+
+if  [ -c "/dev/$i" ]  ; then
+
+umount /dev/$i  
+
+ if [ -d "/media/disk" ]; then 
+rmdir /media/disk/* 
+else
+mkdir /media/disk
+fi
+echo "removed dir"
+
+#read some
+clear
+
+mkdir /media/disk/$i
+# trying to mount ufs
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "       Mounting ufs device..."
+mount /dev/$i /media/disk/$i
+if [ $? -eq 0 ]; then
+mounted="ufs_$i"
+else
+# trying to mount msdos
+clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "       Mounting msdos device..."
+mount_msdosfs /dev/$i /media/disk/$i
+if [ $? -eq 0 ]; then
+mounted="msdos_$i"
+else
+# trying to mount ext4
+clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "       Mounting ext4 device..."
+ext4fuse /dev/$i /media/disk/$i
+if [ $? -eq 0 ]; then
+mounted="ext4_$i"
+else
+clear
+# trying to mount ntfs
+clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "       Mounting ntfs device..."
+ntfs-3gx /dev/$i /media/disk/$i
+if [ $? -eq 0 ]; then
+mounted="ntfs_$i"
+else
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "       Nothing was mounted..."
+mounted="nothing"
+rmdir /media/disk/$i
+clear
+fi
+fi
+fi
+fi
+clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "            Loading xfe..."
+xfe /media/disk/$i
+else
+clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo "       '$i' is not mountable."
+echo " "
+echo "      Press [Enter] to quit...."
+read some
+
+fi
+fi
+clear

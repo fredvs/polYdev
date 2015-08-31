@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JWM>
+    <!-- The root menu. -->
+    <RootMenu height="22" onroot="12">
+        <Program icon="terminal.png" label="Terminal xterm">xterm</Program>
+        <Program icon="terminal2.png" label="Terminal rxvt">rxvt</Program>
+        <Program icon="xfe.png" label="Xfe file manager">xfe</Program>
+        <Program icon="xfw.png" label="Text editor">xfw</Program>
+        <Program icon="www.png" label="Web browser">opera</Program>
+        <Separator/>
+ 
+ <Menu icon="redo.png" label="Mount/unmount devices">
+
+ <Menu icon="harddisk.png" label="Disk">
+       <Program icon="redo.png" label="Mount one disk">xterm -geometry 38x20+100+100 -bg darkgreen -fg white -cr black -T "Disk Mountor."  -e pyvmountdiskone</Program> 
+       <Program icon="undo.png" label="Unmount one disk">xterm -geometry 38x20+100+100 -bg darkgreen -fg white -cr black -T "Disk Unmountor."  -e pyvumountdiskone</Program> 
+          <Separator/> 
+          <Program icon="redo.png" label="Mount all disks">pyvmountdisk</Program> 
+          <Program icon="undo.png" label="Unmount all disks">pyvumountdisk</Program> 
+      </Menu>
+  <Menu icon="cdrom.png" label="Cdrom">
+    <Program icon="redo.png" label="Mount all cdrom">pyvmountcd</Program> 
+    <Program icon="undo.png" label="Unmount all cdrom">pyvumountcd</Program> 
+      </Menu>
+ </Menu>
+
+ <Menu icon="folder.png" label="Folders">
+       <Program icon="folder.png" label="/root">xfe /root</Program>
+       <Program icon="folder.png" label="/usr/local/share">xfe /usr/local/share</Program>
+       <Program icon="folder.png" label="/usr/local/bin">xfe /usr/local/bin</Program>
+       <Separator/>   
+        <Program icon="harddisk.png" label="Disk">xfe /media/disk</Program>
+<Separator/> 
+  <Program icon="cdrom.png" label="Cdrom">xfe /media/cdrom</Program>
+         </Menu>
+ <Separator/>
+        <Menu icon="development.png" label="Development">
+            <Program icon="msegui.png" label="MSEide">/usr/local/share/mseide/mseide</Program>
+            <Program icon="ideu.png" label="ideU">/usr/local/share/ideu/ideU</Program>
+            <Program icon="fpgui.png" label="fpGUI designer">/usr/local/share/designer_ext/designer_ext</Program>
+        </Menu>
+        <Menu icon="www.png" label="Internet">
+            <Program icon="opera.png" label="Opera web browser">opera</Program>
+        </Menu>
+        <Menu icon="graphics.png" label="Graphics">
+            <Program icon="xfi.png" label="Images viewer">xfi</Program>
+           <Program icon="graphics.png" label="IrfanView">wine '/root/.wine/drive_c/IrfanView/i_view32.exe'</Program>
+           <Program icon="picker.png" label="Color_Pickor">/usr/local/share/color_pickor/color_pickor</Program>
+           <Program icon="xmag.png" label="Xmag (x5)">xmag</Program>
+        </Menu>
+        <Menu icon="music.png" label="Audio">
+           <Program icon="speakers.png" label="SimplePlayer">/usr/local/share/uos/simpleplayer</Program>
+           <Program icon="settings.png" label="Xmixer">xmixer</Program>
+          </Menu>
+        <Menu icon="utils.png" label="Utilities">
+            <Program icon="font.png" label="Fonts">xfontsel</Program>
+            <Program icon="calculator.png" label="Calculator">xcalc</Program>
+            <Program icon="clock.png" label="XClock">xclock</Program>
+            <Program icon="calendar.png" label="XCalendar">xcalendar</Program>
+            <Program icon="settings.png" label="Audio dev info">/usr/local/share/uos/deviceinfos</Program>
+             <Program icon="speakers.png" label="Assisitve test">/usr/local/share/sakit/sak_test</Program>
+            <Program icon="install.png" label="Transfer to device">xterm -geometry 86x30+100+100 -bg darkgreen -fg white -cr black -T "System Transferator."  -e pyvinst</Program>    
+        </Menu>
+        <Menu icon="settings.png" label="Settings">
+            <Program icon="editor.png" label="JWM config">xfw ~/.jwmrc</Program>
+            <Program icon="keyboard.png" label="Keyboard layout">xterm -geometry 52x8+100+100 -bg darkgreen -fg white -cr black -T "Keyboard Configurator."  -e pyvsetkeyb</Program>
+            <Program icon="settings.png" label="Config Wine">winecfg</Program>
+            <Program icon="users.png" label="Add users">xterm  -bg darkgreen -fg white -cr black -T "Add users"  -e pyvadduser</Program>
+            <Menu icon="system.png" label="System">
+      <Program icon="system.png" label="loader.conf">xfw /boot/loader.conf</Program>
+       <Program icon="system.png" label="rc.conf">xfw /etc/rc.conf</Program>
+       <Program icon="system.png" label="ttys">xfw /etc/ttys</Program>
+       <Program icon="system.png" label="sudoers">xfw /etc/sudoers</Program>
+       </Menu>        
+ </Menu>
+        <Separator/> 
+<Menu icon="install.png" label="Install programs">
+          <Program icon="install.png" label="Install All">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_allw</Program>
+      <Separator/>     
+     <Program icon="install.png" label="Install Dev dependencies">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_devdepw</Program>
+     <Program icon="install.png" label="Install lib32 multiarch">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_lib32w</Program>
+     <Program icon="install.png" label="Install git">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_gitw</Program>   
+     <Program icon="install.png" label="Install Wine emulator">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_winew</Program>   
+     <Program icon="install.png" label="Install gdb debugger">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_gdbw</Program>   
+     <Program icon="install.png" label="Install fpc compiler">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_fpcw</Program>
+     <Program icon="install.png" label="Install fpGUI widgetset">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_fpguiw</Program>   
+     <Program icon="install.png" label="Install MSEgui widgetset">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_mseguiw</Program>
+     <Program icon="install.png" label="Install IView image edit">xterm -bg darkgreen -fg white -cr black -T "Installator."  -e install_iview</Program>   
+     </Menu>
+   <Separator/> 
+        <Restart label="Restart X" icon="restart.png"/>
+        <Exit label="Exit X" confirm="false" icon="quit.png"/>
+        <Program  label="Shutdown" popup="Shutdown now" icon="edit-delete.png">poweroff</Program>
+       
+    </RootMenu>
+
+    <!-- Options for program groups. 
+    <Group>
+        <Class>Pidgin</Class>
+        <Option>sticky</Option>
+    </Group>
+    <Group>
+        <Name>xterm</Name>
+        <Option>vmax</Option>
+        <Option>icon:terminal.png</Option>
+    </Group>
+    <Group>
+        <Name>xfw</Name>
+        <Option>icon:editor.png</Option>
+    </Group>
+    <Group>
+        <Name>xcalc</Name>
+        <Option>icon:calculator.png</Option>
+    </Group>
+   -->
+
+    <!-- Tray at the top. -->
+    <Tray x="0" y="1" height="28" autohide="false" layout="horizontal">
+        <!-- Additional TrayButton attribute: label -->
+        <TrayButton popup="Shutdown now" icon="edit-delete.png">exec:poweroff</TrayButton>
+       <TrayButton popup="Quit X session" icon="quit.png">exec:jwm -exit</TrayButton>
+        <TrayButton popup="Reload X config" icon="restart.png">exec:jwm -restart</TrayButton>
+        <Clock format="%a %d %b %H:%M">xcalendar</Clock>        
+        <TrayButton popup="Sound volume" icon="speakers.png">exec:xmixer</TrayButton>
+        <TrayButton popup="General menu" label="Menu">root:1</TrayButton>
+        <TrayButton popup="Show/hide desktop" icon="display.png">showdesktop</TrayButton>
+        <TrayButton popup="Terminal" icon="terminal.png">exec:xterm</TrayButton>
+        <TrayButton popup="File manager" icon="file-manager.png">exec:xfe</TrayButton>
+        <TrayButton popup="Text editor" icon="editor.png">exec:xfw</TrayButton>
+        <TrayButton popup="Web browser" icon="www.png">exec:opera</TrayButton>
+
+        <TaskList maxwidth="256"/>
+
+        <Pager width="40" height="0" labeled="true"/>
+
+        <Dock/>
+
+<!--
+        <Swallow name="xload" width="64">
+            xload -nolabel -bg black -fg green -hl white
+        </Swallow>
+-->
+      </Tray>
+
+    <!-- Visual Styles -->
+    <WindowStyle>
+        <Font>FreeSans-11</Font>
+        <Width>4</Width>
+        <Height>20</Height>
+        <Active>
+            <Text>#000000</Text>
+            <Title>#7C7C7C:#E4E4E4</Title>
+            <Outline>#000000</Outline>
+            <Opacity>1.0</Opacity>
+        </Active>
+        <Inactive>
+            <Text>#D0D0D0</Text>
+            <Title>#808080:#111111</Title>
+            <Outline>#000000</Outline>
+            <Opacity>0.5:0.9:0.1</Opacity>
+        </Inactive>
+    </WindowStyle>
+    <TrayStyle>
+        <Font>FreeSans-11</Font>
+        <Background>#ACACAC:#E4E4E4</Background>
+        <Foreground>black</Foreground>
+        <Opacity>0.75</Opacity>
+    </TrayStyle>
+    <TaskListStyle>
+        <Font>FreeSans-11</Font>
+        <ActiveForeground>black</ActiveForeground>
+        <ActiveBackground>#E4E4E4:#ACACAC</ActiveBackground>
+        <Foreground>#E0E0E0</Foreground>
+        <Background>#B0B0B0:#111111</Background>
+    </TaskListStyle>
+    <PagerStyle>
+        <Outline>#000000</Outline>
+        <Text>#FFFFFF</Text>
+        <Foreground>#444444</Foreground>
+        <Background>#111111</Background>
+        <ActiveForeground>#CC7700</ActiveForeground>
+        <ActiveBackground>#884400</ActiveBackground>
+    </PagerStyle>
+    <MenuStyle>
+        <Font>FreeSans-11</Font>
+        <Foreground>#111111</Foreground>
+        <Background>#E4E4E4</Background>
+        <ActiveForeground>#F0F0F0</ActiveForeground>
+        <ActiveBackground>#58CB5D:#255627</ActiveBackground>
+        <Opacity>0.85</Opacity>
+    </MenuStyle>
+    <PopupStyle>
+        <Font>FreeSans-10</Font>
+        <Outline>#000000</Outline>
+        <Foreground>#111111</Foreground>
+        <Background>#E4E4E4</Background>
+    </PopupStyle>
+
+    <!-- Path where icons can be found.
+         IconPath can be listed multiple times to allow searching
+         for icons in multiple paths.
+      -->
+    <IconPath>
+        /root/images/
+    </IconPath>
+ 
+    <!-- Virtual Desktops -->
+    <!-- Desktop tags can be contained within Desktops for desktop names. -->
+    <Desktops width="2" height="1">
+        <Background type="image">/root/images/bg.jpg</Background>
+        <Desktop>
+        <Background type="image">/root/images/bg.jpg</Background>
+        </Desktop>
+        <Desktop>
+        <Background type="image">/root/images/bg2.jpg</Background>
+         </Desktop>
+    </Desktops>
+
+    <!-- Double click speed (in milliseconds) -->
+    <DoubleClickSpeed>400</DoubleClickSpeed>
+
+    <!-- Double click delta (in pixels) -->
+    <DoubleClickDelta>2</DoubleClickDelta>
+
+    <!-- The focus model (sloppy or click) -->
+    <FocusModel>click</FocusModel>
+
+    <!-- The snap mode (none, screen, or border) -->
+    <SnapMode distance="10">border</SnapMode>
+
+   <!-- The move mode (outline or opaque) -->
+   <MoveMode coordinates="corner">opaque</MoveMode>
+
+   <!-- The resize mode (outline or opaque) -->
+   <ResizeMode coordinates="corner">opaque</ResizeMode>
+
+    <!-- Key bindings -->
+    <Key key="Up">up</Key>
+    <Key key="Down">down</Key>
+    <Key key="Right">right</Key>
+    <Key key="Left">left</Key>
+    <Key key="h">left</Key>
+    <Key key="j">down</Key>
+    <Key key="k">up</Key>
+    <Key key="l">right</Key>
+    <Key key="Return">select</Key>
+    <Key key="Escape">escape</Key>
+
+    <Key mask="A" key="Tab">nextstacked</Key>
+    <Key mask="A" key="F4">close</Key>
+<!--
+    <Key mask="A" key="#">desktop#</Key>
+    <Key mask="A" key="F1">root:1</Key>
+    <Key mask="A" key="F2">window</Key>
+    <Key mask="A" key="F10">maximize</Key>
+    <Key mask="A" key="Right">rdesktop</Key>
+    <Key mask="A" key="Left">ldesktop</Key>
+    <Key mask="A" key="Up">udesktop</Key>
+    <Key mask="A" key="Down">ddesktop</Key>
+-->
+</JWM>

@@ -1,0 +1,11 @@
+#!/bin/sh
+clear
+echo "Hello."
+echo "This will assign your keyboard layout."
+echo "Enter the the keyboard code to use."
+echo "For example => us, pt, es, fr, ... + [Enter]."
+read thekeyb
+setxkbmap ${thekeyb} 
+echo "The layout <${thekeyb}> was assigned... " 
+echo "..."
+sleep 1.5

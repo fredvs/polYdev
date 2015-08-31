@@ -1,0 +1,14 @@
+#!/bin/sh
+
+DESTDIR=/usr/local/share
+DISTDIR=/dist
+
+ISOVERSION=1
+
+echo "Installing MSEgui source."; \
+echo "..."; \
+
+${_v} tar -xpzf ${DISTDIR}/msegui.tar.gz -C ${DESTDIR}
+
+echo "Installation of MSEgui done."; \
+

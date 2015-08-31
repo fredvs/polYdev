@@ -1,0 +1,41 @@
+#!/bin/sh
+
+DESTDIR=/
+DISTDIR=/dist
+
+PKG=/usr/local/sbin/pkg
+
+ISOVERSION=1
+
+echo "Installing GDB packages."
+echo "..."
+echo "Decompressing packages phase1..."
+
+ tar -xpzf ${DISTDIR}/gdb.tar.gz -C ${DISTDIR}
+
+		echo -n "Installing GDB packages ..." \
+
+              cd ${DISTDIR}/gdb && for _FILE in *; do \
+                        _FILES="/dist/gdb/${_FILE}"; \
+                
+                ${PKG} -c ${DESTDIR} add -M ${_FILES}; \
+                                done; \
+
+echo "Decompressing packages phase 2..."
+ tar -xpzf ${DISTDIR}/gdb.tar.gz -C ${DISTDIR}
+
+		echo -n "Installing GDB packages ..." \
+
+              cd ${DISTDIR}/gdb && for _FILE in *; do \
+                        _FILES="/dist/gdb/${_FILE}"; \
+                
+                ${PKG} -c ${DESTDIR} add -M ${_FILES}; \
+                                done; \
+		rm -rf ${DISTDIR}/gdb; \
+		echo "Done."; \
+
+echo "Do not worry about missing dependencies."
+echo "..."
+echo "There are already installed in main system..."
+
+
