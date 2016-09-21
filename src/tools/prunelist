@@ -1,3 +1,17 @@
+usr/bin/c++
+usr/bin/c++filt
+usr/bin/g++
+usr/bin/c89
+usr/bin/c99
+usr/bin/CC
+usr/bin/cc
+usr/bin/clang
+usr/bin/clang++
+usr/bin/clang-cpp
+usr/bin/clang-tblgen
+usr/bin/cpp
+usr/bin/gcc
+usr/bin/yacc
 usr/bin/f77
 usr/bin/byacc
 usr/bin/addr2line
@@ -8,8 +22,6 @@ usr/bin/as
 usr/bin/gasp
 usr/bin/gdb
 usr/bin/gdbreplay
-usr/bin/ld
-usr/bin/nm
 usr/bin/objcopy
 usr/bin/objdump
 usr/bin/ranlib
@@ -24,6 +36,9 @@ usr/include
 usr/lib/*.a
 usr/lib/private/*.a
 usr/lib/private/libunbound*
+usr/libexec/cc1
+usr/libexec/cc1obj
+usr/libexec/cc1plus
 usr/libexec/f771
 usr/sbin/unbound*
 usr/share/dict

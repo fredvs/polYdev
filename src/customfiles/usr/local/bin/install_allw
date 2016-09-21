@@ -1,7 +1,5 @@
 #!/bin/sh
 
-install_devdep
-echo "..."
 install_gdb
 echo "..."
 install_fpc
@@ -14,9 +12,15 @@ install_lib32
 echo "..."
 install_git
 echo "..."
+install_ffmpeg_vlc
+echo "..."
 install_wine
 echo "..."
 install_ivew
+echo "..."
+echo "...WARNING..."
+echo "..."
+echo "---> You should reboot to complete the installation. <---"
 echo "..."
 echo "Press [Enter] to quit"
 

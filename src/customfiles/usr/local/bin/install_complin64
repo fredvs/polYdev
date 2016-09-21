@@ -1,0 +1,46 @@
+#!/bin/sh
+
+DESTDIR=/
+DISTDIR=/dist/pack
+
+echo "Installing compat Linux64/32 libraries."; \
+echo "..."; \
+
+ tar -xpzf ${DISTDIR}/compat_linux64-32.tar.xz -C ${DESTDIR}
+
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libc.so.6 /compat/linux/usr/lib/x86_64-linux-gnu/libc.so.7
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libc.so.6 /compat/linux/usr/lib/x86_64-linux-gnu/libc.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libX11.so.6 /compat/linux/usr/lib/x86_64-linux-gnu/libX11.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libm.so.6 /compat/linux/usr/lib/x86_64-linux-gnu/libm.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libfreetype.so.6 /compat/linux/usr/lib/x86_64-linux-gnu/libfreetype.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libfontconfig.so.1 /compat/linux/usr/lib/x86_64-linux-gnu/libfontconfig.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libexpat.so.1 /compat/linux/usr/lib/x86_64-linux-gnu/libexpat.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libpng12.so.0 /compat/linux/usr/lib/x86_64-linux-gnu/libpng.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libpthread.so.0 /compat/linux/usr/lib/x86_64-linux-gnu/libpthread.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libxcb.so.1 /compat/linux/usr/lib/x86_64-linux-gnu/libxcb.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libXft.so.2 /compat/linux/usr/lib/x86_64-linux-gnu/libXft.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libXdmcp.so.6 /compat/linux/usr/lib/x86_64-linux-gnu/libXdmcp.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libdl-2.19.so /compat/linux/usr/lib/x86_64-linux-gnu/libdl.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libdl-2.19.so /compat/linux/usr/lib/x86_64-linux-gnu/libdl.so.2
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libXau.so.6 /compat/linux/usr/lib/x86_64-linux-gnu/libXau.so
+ln -s /compat/linux/usr/lib/x86_64-linux-gnu/libc.so.6 /compat/linux/lib/x86_64-linux-gnu/libc.so
+
+ln -s /compat/linux/lib/libdl-2.9.so /compat/linux/lib/libdl.so
+
+ln -s /compat/linux/lib/libexpat.so.1.5.2 /compat/linux/usr/local/lib/libexpat.so.1
+ln -s /compat/linux/lib/libpthread-2.9.so /compat/linux/lib/libpthread.so
+
+ln -s /compat/linux/usr/lib/libX11.so.6.2.0 /compat/linux/usr/local/lib/libX11.so
+ln -s /compat/linux/usr/lib/libfontconfig.so.1.3.0 /compat/linux/usr/local/lib/libfontconfig.so
+ln -s /compat/linux/usr/lib/libfontconfig.so.1.3.0 /compat/linux/usr/local/lib/libfontconfig.so.1
+
+echo "Installation of compat Linux64/32 libraries done."; \
+
+echo "..."
+echo "...WARNING..."
+echo "..."
+echo "---> You should reboot to complete the installation. <---"
+echo "..."
+
+
+

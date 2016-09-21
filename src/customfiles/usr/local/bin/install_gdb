@@ -1,41 +1,22 @@
 #!/bin/sh
 
-DESTDIR=/
-DISTDIR=/dist
+DESTDIR=/usr/local/bin
+DESTDIR2=/usr/local/lib
 
-PKG=/usr/local/sbin/pkg
+DISTDIR=/dist/pack
 
-ISOVERSION=1
+echo "Installing GDB ."
 
-echo "Installing GDB packages."
+ tar -xpzf ${DISTDIR}/gdb.tar.xz -C ${DESTDIR}
+
 echo "..."
-echo "Decompressing packages phase1..."
 
- tar -xpzf ${DISTDIR}/gdb.tar.gz -C ${DISTDIR}
+echo "Installing Readline."
 
-		echo -n "Installing GDB packages ..." \
+ tar -xpzf ${DISTDIR}/readline.tar.xz -C ${DESTDIR2}
 
-              cd ${DISTDIR}/gdb && for _FILE in *; do \
-                        _FILES="/dist/gdb/${_FILE}"; \
-                
-                ${PKG} -c ${DESTDIR} add -M ${_FILES}; \
-                                done; \
 
-echo "Decompressing packages phase 2..."
- tar -xpzf ${DISTDIR}/gdb.tar.gz -C ${DISTDIR}
-
-		echo -n "Installing GDB packages ..." \
-
-              cd ${DISTDIR}/gdb && for _FILE in *; do \
-                        _FILES="/dist/gdb/${_FILE}"; \
-                
-                ${PKG} -c ${DESTDIR} add -M ${_FILES}; \
-                                done; \
-		rm -rf ${DISTDIR}/gdb; \
-		echo "Done."; \
-
-echo "Do not worry about missing dependencies."
 echo "..."
-echo "There are already installed in main system..."
+echo "Done..."
 
 

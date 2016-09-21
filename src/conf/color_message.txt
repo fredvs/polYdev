@@ -1,0 +1,6 @@
+#!/bin/sh
+clear
+echo -e "\e[1;37mWelcome to\e[0m \e[1;36mpolYdev\e[0m" !  36cyan
+echo -e "\e[1;33mWelcome to\e[0m \e[1;36mpolYdev\e[0m" !  33jaune  32vert 31rouge 29blanc 
+echo -e "\e[1;29mWelcome to\e[0m \e[1;36mp\e[0m\e[1;33mo\e[0m\e[1;31ml\e[0m\e[1;32mY\e[0m\e[1;29mdev\e[0m\e[0m" !
+read some

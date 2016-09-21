@@ -37,7 +37,6 @@ SCRIPTSDIR=scripts
 PACKAGESDIR?=packages
 CUSTOMFILESDIR=customfiles
 SPLASHDIR=splash
-ICONDIR=icons
 XROOTIMAGEDIR=tmp/mfs/root/images
 BINDIR=tmp/mfs/usr/bin
 XROOTDIR=tmp/mfs/root
@@ -90,9 +89,9 @@ BSDLABEL=bsdlabel
 #
 DOFS=${TOOLSDIR}/doFS.sh
 SCRIPTS=mdinit mfsbsd interfaces packages
-BOOTMODULES=aio atapicam cpufreq firmware kbdmux usfs utopia x86bios fade_saver star_saver random via libiconv linsysfs msdosfs autofs fuse linux snd_ad1816 snd_als4000 snd_atiixp snd_cmi snd_cs4281 snd_csa snd_driver snd_ds1 snd_emu10k1 snd_emu10kx snd_hda snd_ess snd_maestro snd_sb16 snd_via8233 snd_via82c686 snd_solo snd_uaudio sound splash_pcx wlan
-MFSMODULES=geom_mirror geom_nop opensolaris zfs ext2fs snp smbus ipmi ntfs nullfs tmpfs \
-	aesni crypto cryptodev geom_eli
+BOOTMODULES= mmc mmcsd sdhci libmchain cd9660 cd9660_iconv msdosfs msdosfs_iconv uhid uhci uhso ukbd uled ulpt coretemp aio cpufreq firmware kbdmux usfs utopia x86bios fade_saver star_saver random via libiconv linsysfs msdosfs autofs fuse linux  linux64 linux_common snd_ad1816 snd_als4000 snd_atiixp snd_cmi snd_cs4281 snd_csa snd_driver snd_ds1 snd_emu10k1 snd_emu10kx snd_hda snd_ess snd_maestro snd_sb16 snd_via8233 snd_via82c686 snd_solo snd_uaudio sound splash_pcx wlan
+MFSMODULES=aesni crypto geom_mirror geom_nop opensolaris zfs ext2fs snp smbus ipmi ntfs ahci nullfs tmpfs \
+	crypto cryptodev geom_eli
 #
 
 .if defined(V)
@@ -421,7 +420,6 @@ ${WRKDIR}/.config_done:
 	${_v}${MKDIR} ${XROOTIMAGEDIR}
 	${INSTALL} -m 0644 ${SPLASHDIR}/bg.jpg ${XROOTIMAGEDIR}/bg.jpg
 	${INSTALL} -m 0644 ${SPLASHDIR}/bg2.jpg ${XROOTIMAGEDIR}/bg2.jpg
-	${CP} ${ICONDIR}/*.* ${XROOTIMAGEDIR}/
 	${INSTALL} -m 0644 ${SPLASHDIR}/splash.pcx ${XBOOTDIR}/splash.pcx
 .endif
 

@@ -3,11 +3,15 @@
 #  Fred van Stappen
 #
 
-caseinsensitive
-
 # COLORS [[[fontcolor [backgroundcolor [statementcolor]]]
 #                      cl_default for project options settings 
 COLORS cl_black cl_white
+
+caseinsensitive
+
+pairwords
+ 'BEGIN' 'CASE' 'TRY' 'RECORD' 'CLASS' 'OBJECT' 'INTERFACE' 'END'
+ 'REPEAT' 'UNTIL'
 
 styles
  default ''
@@ -16,26 +20,29 @@ styles
  option '' cl_red 
  string '' cl_dkgreen
  symbol '' cl_red
-
+ beginend 'b' $4D006B
 
 keyworddefs pascal
- 'ABSOLUTE' 'ABSTRACT' 'AND' 'ARRAY' 'AS' 'ASM' 'ASSEMBLER' 'BEGIN'
- 'BREAK' 'CASE' 'CDECL' 'CLASS' 'CONST' 'CONSTREF' 'CONSTRUCTOR'
+ 'ABSOLUTE' 'ABSTRACT' 'AND' 'ARRAY' 'AS' 'ASM' 'ASSEMBLER' 
+ 'BREAK' 'CDECL' 'CONST' 'CONSTREF' 'CONSTRUCTOR'
  'CONTINUE' 'DEFAULT' 'DEPRECATED' 'DESTRUCTOR' 'DISPOSE' 'DIV' 'DO' 'DOWNTO'
- 'ELSE' 'END' 'EXCEPT' 'EXIT' 'EXPORT' 'EXPORTS' 'EXTERNAL' 'FAIL'
+ 'ELSE' 'EXCEPT' 'EXIT' 'EXPORT' 'EXPORTS' 'EXTERNAL' 'FAIL'
  'FALSE' 'FAR' 'FILE' 'FINALIZATION' 'FINALLY' 'FOR' 'FORWARD' 'FUNCTION' 'GOTO' 'IF'
  'IMPLEMENTATION' 'IMPLEMENTS' 'IN' 'INDEX' 'INHERITED'
- 'INITIALIZATION' 'INLINE' 'INTERFACE' 'INTERRUPT' 'IS' 'LABEL' 'LIBRARY'
- 'MESSAGE' 'MOD' 'NEW' 'NIL' 'NODEFAULT' 'NOT' 'OBJECT'
+ 'INITIALIZATION' 'INLINE' 'INTERRUPT' 'IS' 'LABEL' 'LIBRARY'
+ 'MESSAGE' 'MOD' 'NEW' 'NIL' 'NODEFAULT' 'NOT' 
  'OF' 'ON' 'OPERATOR' 'OR' 'OUT' 'OTHERWISE' 'PACKED' 'POPSTACK' 'PRIVATE' 
  'PROCEDURE' 'PROGRAM' 'PROPERTY' 'PROTECTED'
- 'PUBLIC' 'PUBLISHED' 'RAISE' 'READ' 'RECORD' 'REINTRODUCE' 'REPEAT' 
+ 'PUBLIC' 'PUBLISHED' 'RAISE' 'READ' 'REINTRODUCE' 
  'RESOURCESTRING'
  'SELF' 'SET' 'SHL' 'SHR'
- 'STDCALL' 'STORED' 'THEN' 'THREADVAR' 'TO' 'TRUE' 'TRY' 'TYPE' 'UNIT' 'UNTIL'
+ 'STDCALL' 'STORED' 'THEN' 'THREADVAR' 'TO' 'TRUE' 'TYPE' 'UNIT' 
  'USES' 'VAR' 'VIRTUAL' 'WHILE' 'WITH' 'WRITE' 'XOR'
  'OVERLOAD' 'OVERRIDE'
 
+keyworddefs pascalplus
+'BEGIN' 'CASE' 'TRY' 'RECORD' 'CLASS' 'OBJECT' 'INTERFACE' 'END'
+ 'REPEAT' 'UNTIL'
 
 scope option option
  endtokens
@@ -48,7 +55,6 @@ scope comment1 comment
 scope comment2 comment
  endtokens
   ''
-
 scope comment3 comment
  endtokens
   '*)'
@@ -73,7 +79,9 @@ scope string1 string
 return
 
 scope symbol1 symbol
+return
 
+scope beginend1 beginend
  return
 
 # No endtokens, scope terminates immediately
@@ -84,8 +92,10 @@ scope main
  keywords words
   pascal
 
+ pascalplus beginend  
+   
  calltokens
-  '{$' option
+ .'{$' option
   '{' comment1
   '//' comment2
   '(*' comment3
@@ -107,6 +117,9 @@ scope main
   '*' symbol1
   '[' symbol1
   ']' symbol1
+  
+  
+  
   
   
 

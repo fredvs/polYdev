@@ -1,14 +1,12 @@
 #!/bin/sh
 
 DESTDIR=/usr/local/share
-DISTDIR=/dist
-
-ISOVERSION=1
+DISTDIR=/dist/pack
 
 echo "Installing MSEgui source."; \
 echo "..."; \
 
-${_v} tar -xpzf ${DISTDIR}/msegui.tar.gz -C ${DESTDIR}
+${_v} tar -xpzf ${DISTDIR}/msegui.tar.xz -C ${DESTDIR}
 
 echo "Installation of MSEgui done."; \
 

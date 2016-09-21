@@ -1,0 +1,3 @@
+polYdev
+------------
+Licenses of programs and scripts are in /licences directory.

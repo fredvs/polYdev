@@ -1,8 +1,8 @@
 #!/bin/sh
 
 DESTDIR=/
-PACK=/dist/i386-wine-1.6.2_10,1.txz
-DISTDIR=/dist
+PACK=/dist/pack/i386-wine-1.8.4,1.txz
+DISTDIR=/dist/pack
 
 WINELIBDIR=/root/.wine/drive_c/windows/system32
 LIB32DIR=/usr/local/lib32
@@ -15,12 +15,12 @@ ${PKG} -c ${DESTDIR} add -M ${PACK}
 
 echo "Installing winelib package."
 
- tar -xpzf ${DISTDIR}/winedll.tar.gz -C ${DISTDIR}/
+ tar -xpzf ${DISTDIR}/winedll.tar.xz -C ${DISTDIR}/
 
 cp ${DISTDIR}/winedll/mfc42.dll ${WINELIBDIR}/
-cp ${DISTDIR}/winedll/libXft.so.2 ${LIB32DIR}/
 
 winecfg
+
 echo "Done."
 
 echo "Do not worry about missing dependencies."

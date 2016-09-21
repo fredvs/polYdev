@@ -1,26 +1,40 @@
 #!/bin/sh
 
 DESTDIR=/usr/local/lib
-DISTDIR=/dist
+DISTDIR=/dist/pack
 
-ISOVERSION=1
+echo "Installing fpc 3.0.0 for FreeBSD 64/32, Linux 64/32 and Windows 32..."; \
+echo "...";  
 
-echo "Installing fpc 2.6.4 and fpc 3.1.1"; \
-echo "..."; \
+ tar -xpzf ${DISTDIR}/fpc.tar.xz -C ${DESTDIR}
 
- tar -xpzf ${DISTDIR}/fpc.tar.gz -C ${DESTDIR}
+ln -s ${DESTDIR}/fpc/3.0.0/ppcx64 /usr/local/bin/ppcx64
+ln -s ${DESTDIR}/fpc/3.0.0/ppc386 /usr/local/bin/ppc386
+ln -s ${DESTDIR}/fpc/3.0.0/ppc386.exe /usr/local/bin/ppc386win
+ln -s ${DESTDIR}/fpc/3.0.0/ppcx64_linux  /usr/local/bin/ppcx64_linux
 
-ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/ppcx64 
-ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/ppcx64_264
+brandelf -t Linux /usr/local/lib/fpc/3.0.0/ppc386_linux
 
-ln -s ${DESTDIR}/fpc/3.1.1/ppcx64 /usr/local/bin/ppcx64_311
+ln -s ${DESTDIR}/fpc/3.0.0/ppc386_linux  /usr/local/bin/ppc386_linux
 
-ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/fpc
-ln -s ${DESTDIR}/fpc/2.6.4/ppcx64 /usr/local/bin/fpc264
-ln -s ${DESTDIR}/fpc/3.1.1/ppcx64 /usr/local/bin/fpc311
-
+cp -afv /dist/config/fpc.cfg  /etc/fpc.cfg
 
 echo "Installation of fpc done."; \
+
+echo "..."
+echo "Installing compat Linux 64/32..."
+echo "..."
+install_complin64
+
+echo "..."
+
+echo "All done."
+
+echo "...WARNING..."
+echo "..."
+echo "---> You should reboot to complete the installation. <---"
+echo "..."
+
 
 
 

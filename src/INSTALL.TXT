@@ -1,0 +1,13 @@
+How to create the iso of polYdev.
+---------------------------------
+1) - Copy all the packages into /src/packages.
+     See /polydev/src/packages/packages_list.pcx for all the packages needed.
+
+2) - Copy in /polydev/src/rootsys/ the compressed base and kernel files.
+     Those files can come from your own system or from official FreeBSD iso.
+
+4) - # cd /polydev_directory/src
+   - # sudo make iso BASE=/polydev_directory/src/rootsys
+
+5) -Enjoy ;-)
+

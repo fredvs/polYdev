@@ -1040,13 +1040,25 @@ else
 		if [ -z "$configflag" ]; then
                         echo -n  "${uhome}"
             
-                    cp -afv /root/.xinitrc  ${uhome}/.xinitrc 
-                    cp -afv /root/.config/  ${uhome}/.config/ 
-                    cp -afv /root/.opera/  ${uhome}/.opera/ 
-                   cp -afv /dist/etc/issue  /etc/issue
+                    cp -afv /dist/config/xinitrc  ${uhome}/.xinitrc 
+
+                 /bin/mkdir -p  ${uhome}/.config
+                   /bin/mkdir -p  ${uhome}/.config/xfe
+            
+                   cp -afv /dist/config/.config/xfe/xferc  ${uhome}/.config/xfe/xferc
+                   cp -afv /dist/config/.config/xfe/xfwrc  ${uhome}/.config/xfe/xfwrc
+                    cp -afv /dist/etc/issue  /etc/issue
                     cp -afv /dist/users/jwmrc  ${uhome}/.jwmrc 
+
                     chmod 1777 /tmp
                      chmod 1777 /var/tmp
+                 chmod 1777 ${uhome}/.xinitrc
+                 chmod 1777 ${uhome}/.config/xfe/xferc 
+                 chmod 1777 ${uhome}/.config/xfe/xfwrc 
+                 chmod 1777 ${uhome}/.jwmrc
+                 chmod 1777 ${uhome}/.config
+                 chmod 1777 ${uhome}/.config/*
+                
                  clear
 			echo -n "Add another user? (yes/no): "
 		else

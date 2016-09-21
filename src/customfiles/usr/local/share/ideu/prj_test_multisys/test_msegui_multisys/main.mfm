@@ -1,0 +1,46 @@
+object mainfo: tmainfo
+  bounds_x = 360
+  bounds_y = 219
+  bounds_cx = 389
+  bounds_cy = 90
+  container.frame.localprops = []
+  container.frame.localprops1 = []
+  container.bounds = (
+    0
+    0
+    389
+    90
+  )
+  caption = 'Multi system MSEgui test.'
+  moduleclassname = 'tmainform'
+  object tpolygon1: tpolygon
+    optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_mousewheel, ow_destroywidgets]
+    frame.colorframe = 16755711
+    frame.localprops = [frl_colorframe]
+    frame.localprops1 = []
+    face.localprops = []
+    taborder = 1
+    bounds_x = 8
+    bounds_y = 8
+    bounds_cx = 370
+    bounds_cy = 66
+    poly_edgeradiusmm = 0
+    poly_rotation = 0
+    poly_color = 10484915
+    poly_linewidthmm = 0
+    poly_brushoffset_x = 0
+    poly_brushoffset_y = 0
+  end
+  object label1: tlabel
+    bounds_x = 48
+    bounds_y = 32
+    bounds_cx = 278
+    bounds_cy = 17
+    caption = 'Hello World. I am a MSEgui application.'
+    font.colorbackground = 10484915
+    font.height = 14
+    font.name = 'stf_default'
+    font.localprops = [flp_colorbackground, flp_height]
+    reffontheight = 17
+  end
+end

@@ -221,6 +221,8 @@ cp -afv /dist/bin/pyvinst   /media/disk/polydevdisk/usr/local/bin/pyvinst
 cp -afv /dist/bin/pyvmountdisk  /media/disk/polydevdisk/usr/local/bin/pyvmountdisk
 cp -afv /dist/bin/pyvumountdisk  /media/disk/polydevdisk/usr/local/bin/pyvumountdisk
 
+tar -xpzf /dist/pack/compat_linux64.tar.xz -C  /media/disk/polydevdisk/
+
 chmod 1777   /media/disk/polydevdisk/tmp
 chmod 1777   /media/disk/polydevdisk/var/tmp
 

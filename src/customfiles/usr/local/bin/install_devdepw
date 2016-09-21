@@ -1,9 +1,0 @@
-#!/bin/sh
-
-install_devdep
-
-echo "Press [Enter] to quit"
-
-read something
-
-

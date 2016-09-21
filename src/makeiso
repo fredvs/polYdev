@@ -1,0 +1,4 @@
+#!/bin/sh
+cd /usr/polydev
+time make iso BASE=/usr/polydev/rootsys103
+
