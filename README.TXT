@@ -6,7 +6,7 @@ The iso file was created with the msfBSD script of Martin Matuska.
 
 You may download the iso file from here: 
 
-https://mega.nz/#!7pglkTDB!9acWKMGgxVPmzSvUm5S0HiMFiXOYAzQFAdXGS5jD2uw
+https://drive.google.com/file/d/1lja-APlM10z_He82GfPtGDIyGlhiiEaZ/view?usp=sharing
 
 
 Special thanks to wblock@ (FreeBSD), Graeme Geldenhuys (fpGUI) and Martin Schreiber (MSE).
